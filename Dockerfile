@@ -2,11 +2,12 @@ FROM node:21
 
 WORKDIR /app
 
-COPY package*.json ./
-
-RUN npm install
+WORKDIR /usr/src
 
 COPY . .
+
+RUN npm install && \
+    npm run build
 
 EXPOSE 3000
 
