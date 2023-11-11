@@ -1,9 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBarkDto } from './dto/create-bark.dto';
 import { UpdateBarkDto } from './dto/update-bark.dto';
+import { InjectConnection } from '@nestjs/mongoose';
+import { Connection } from 'mongoose';
 
 @Injectable()
 export class BarkService {
+  
+  constructor(@InjectConnection() private connection: Connection) {}
+
   create(createBarkDto: CreateBarkDto) {
     return 'This action adds a new Bark';
   }
